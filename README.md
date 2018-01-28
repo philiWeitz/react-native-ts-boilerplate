@@ -9,7 +9,7 @@
 2. Create .env file:
   - navigate to project root directory and create file: config/.env
   ```
-  touch config/.env
+  cp config/.env.example .env
   ```
 
 3. Install Yarn

@@ -3,6 +3,7 @@ package com.boilerplate;
 import android.app.Application;
  
 import com.facebook.react.ReactApplication;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.corbt.keepawake.KCKeepAwakePackage;
 import org.capslock.RNDeviceBrightness.RNDeviceBrightness;
 import it.innove.BleManagerPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new ReactNativeConfigPackage(),
           new KCKeepAwakePackage(),
           new RNDeviceBrightness(),
           new BleManagerPackage()

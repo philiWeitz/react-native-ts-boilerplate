@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android-dev": "yarn build && concurrently -r 'yarn watch' 'react-native run-android'",
-    "android-prod": "yarn build && react-native run-android --variant=release",
+    "android-dev": "yarn build && concurrently -r 'yarn watch' 'ENVFILE=./config/.env react-native run-android'",
+    "android-prod": "yarn build && ENVFILE=./config/.env react-native run-android --variant=release",
     "lint": "yarn tslint -c tslint.json 'src/**/*.tsx'",
     "clean": "rimraf build",
     "watch": "yarn build -- -w",
@@ -24,6 +24,7 @@
     "react": "16.2.0",
     "react-native": "0.52.2",
     "react-native-ble-manager": "6.2.6",
+    "react-native-config": "^0.11.5",
     "react-native-device-brightness": "1.2.0",
     "react-native-keep-awake": "2.0.6",
     "react-native-material-design": "0.3.7",
