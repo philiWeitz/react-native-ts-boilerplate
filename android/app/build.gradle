@@ -77,6 +77,10 @@ project.ext.vectoricons = [
     iconFontNames: [ 'MaterialIcons.ttf' ]
 ]
 
+/**** Config from ./config directory ****/
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
+
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 
@@ -163,6 +167,7 @@ dependencies {
 
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.facebook.react:react-native:+'
+
     // From node_modules
     compile project(':react-native-vector-icons')
 }
