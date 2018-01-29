@@ -85,7 +85,7 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 
 project.ext.react = [
-  entryFile: "build/index.android.js"
+  entryFile: "index.android.js"
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
