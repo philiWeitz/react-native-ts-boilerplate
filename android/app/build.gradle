@@ -111,7 +111,7 @@ android {
     defaultConfig {
         applicationId "com.boilerplate"
         minSdkVersion 19
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         ndk {
@@ -177,4 +177,14 @@ dependencies {
 task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
+}
+
+task copyMediaFiles(type: Copy) {
+    description = 'copying media file(s) to raw directory...'
+    from '../../media/'
+    into './src/main/res/raw'
+}
+
+gradle.projectsEvaluated {
+     preBuild.dependsOn(copyMediaFiles)
 }

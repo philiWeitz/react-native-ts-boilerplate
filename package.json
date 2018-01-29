@@ -6,9 +6,8 @@
     "android-dev": "yarn build && concurrently -r 'yarn watch' 'ENVFILE=./config/.env react-native run-android'",
     "android-prod": "yarn build && ENVFILE=./config/.env react-native run-android --variant=release",
     "lint": "yarn tslint -c tslint.json 'src/**/*.tsx'",
-    "clean": "rimraf build",
     "watch": "yarn build -- -w",
-    "build": "yarn clean && yarn tsc --"
+    "build": "yarn tsc --"
   },
   "dependencies": {
     "@types/jest": "22.1.0",
@@ -27,11 +26,9 @@
     "react-native-config": "^0.11.5",
     "react-native-device-brightness": "1.2.0",
     "react-native-keep-awake": "2.0.6",
-    "react-native-material-design": "0.3.7",
     "react-native-material-dialog": "0.7.4",
     "react-native-vector-icons": "4.5.0",
     "react-navigation": "1.0.0-beta.27",
-    "rimraf": "2.6.2",
     "tslint": "5.9.1",
     "tslint-config-airbnb": "5.5.0",
     "typescript": "2.6.2"
