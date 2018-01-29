@@ -16,8 +16,6 @@
     "noUnusedLocals": true,
     "outDir": "build",
 
-    "inlineSources": true,
-
     "lib": [
       "es6",
       "es7",
