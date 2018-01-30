@@ -1,16 +1,16 @@
 
 import SamplesStore from './domainStores/samplesStore';
-import GlobalAppUIStore from './uiStores/globalAppUIStore';
+import AppUIStore from './uiStores/appUIStore';
 
 export interface IStores {
   samplesStore: SamplesStore;
-  appUIStateStore: GlobalAppUIStore;
+  appUIStore: AppUIStore;
 }
 
 // combine stores
 const stores : IStores = {
   samplesStore: new SamplesStore(),
-  appUIStateStore: new GlobalAppUIStore(),
+  appUIStore: new AppUIStore(),
 };
 
 export default stores;

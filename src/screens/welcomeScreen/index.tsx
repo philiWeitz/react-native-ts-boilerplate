@@ -9,6 +9,7 @@ import * as DeviceBrightness from 'react-native-device-brightness';
 import * as BleManager from 'react-native-ble-manager';
 import KeepAwake from 'react-native-keep-awake';
 
+import AppUIStore from '../../mobx/uiStores/appUIStore';
 import SampleStore from '../../mobx/domainStores/samplesStore';
 
 
@@ -23,10 +24,12 @@ interface WelcomeScreenState {
 // add injected props here
 interface InjectedWelcomeScreenProps extends WelcomeScreenProps {
   samplesStore: SampleStore;
+  appUIStore: AppUIStore;
 }
 
 
 @inject('samplesStore')
+@inject('appUIStore')
 @observer
 class WelcomeScreen extends React.Component<any,WelcomeScreenState> {
 
@@ -49,11 +52,17 @@ class WelcomeScreen extends React.Component<any,WelcomeScreenState> {
 
 
   render() {
-    const { samplesStore } = this.injected;
+    const { samplesStore, appUIStore } = this.injected;
 
     return (
       <View>
         <Text>Welcome Page</Text>
+        <Text>Counter: {samplesStore.counter}</Text>
+
+        {appUIStore.isLoading
+          ? <Text>Loading...</Text>
+          : <Text>Loaded</Text>
+        }
 
         <Text>Injected Store Items</Text>
         { samplesStore.items.map((item) => {
@@ -65,7 +74,10 @@ class WelcomeScreen extends React.Component<any,WelcomeScreenState> {
           <Text>Enable Bluetooth</Text>
         </Button>
 
-        <Button onPress={() => DeviceBrightness.setBrightnessLevel(0.1)}>
+        <Button onPress={() => {
+          DeviceBrightness.setBrightnessLevel(0.1);
+          samplesStore.incCounter();
+        }}>
           <Icon name="home" />
           <Text>Lower Brightness</Text>
         </Button>

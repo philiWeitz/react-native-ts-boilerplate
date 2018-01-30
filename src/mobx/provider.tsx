@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Text } from 'react-native';
 import { Provider as MobxProvider } from 'mobx-react';
 
-import stores from './stores';
+import stores, { IStores } from './stores';
 
 
 export interface ProviderProps { children?: any; }
@@ -32,5 +32,8 @@ const Provider = ({ children } : ProviderProps) => {
 
   return renderProvider();
 };
+
+
+export const providedStores : IStores = stores;
 
 export default Provider;
