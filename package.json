@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "run-clean": "react-native start --reset-cache",
+    "ios-dev": "ENVFILE=./config/.env react-native run-ios",
     "android-dev": "ENVFILE=./config/.env react-native run-android",
     "android-prod": "ENVFILE=./config/.env react-native run-android --variant=release",
     "lint": "yarn tslint -c tslint.json 'src/**/*.tsx'"
