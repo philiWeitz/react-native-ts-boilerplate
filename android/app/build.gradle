@@ -109,7 +109,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '25.0.1'
     defaultConfig {
-        applicationId "com.boilerplate"
+        applicationId "com.reactnativetsboilerplate"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
