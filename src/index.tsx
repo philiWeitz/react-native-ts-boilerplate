@@ -1,9 +1,10 @@
 
 import * as React from 'react';
+import { Root } from 'native-base';
 
-import Provider, { providedStores } from './mobx/provider';
 import WelcomeNavigator from './navigation';
 import persist, { IHydrateStore } from './mobx/persist';
+import Provider, { providedStores } from './mobx/provider';
 
 
 class App extends React.Component<any,any> {
@@ -22,9 +23,11 @@ class App extends React.Component<any,any> {
 
   render() {
     return (
-      <Provider>
-        <WelcomeNavigator />
-      </Provider>
+      <Root>
+        <Provider>
+          <WelcomeNavigator />
+        </Provider>
+      </Root>
     );
   }
 }

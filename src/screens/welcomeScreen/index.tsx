@@ -3,6 +3,8 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 
+import { NavigationActions } from 'react-navigation';
+
 import { Button, Text, Icon } from 'native-base';
 import { MaterialDialog } from 'react-native-material-dialog';
 import * as DeviceBrightness from 'react-native-device-brightness';
@@ -25,13 +27,14 @@ interface WelcomeScreenState {
 interface InjectedWelcomeScreenProps extends WelcomeScreenProps {
   samplesStore: SampleStore;
   appUIStore: AppUIStore;
+  navigation: object;
 }
 
 
 @inject('samplesStore')
 @inject('appUIStore')
 @observer
-class WelcomeScreen extends React.Component<any,WelcomeScreenState> {
+class WelcomeScreen extends React.Component<WelcomeScreenProps,WelcomeScreenState> {
 
   state = {
     dialogVisible: false,
@@ -50,6 +53,16 @@ class WelcomeScreen extends React.Component<any,WelcomeScreenState> {
     BleManager.start({ showAlert: false });
   }
 
+
+  navigateToListScreen = () => {
+    const navigateAction = NavigationActions.navigate({
+      params: {},
+      routeName: 'List',
+      action: NavigationActions.navigate({ routeName: 'List' }),
+    });
+
+    this.props.navigation.dispatch(navigateAction);
+  }
 
   render() {
     const { samplesStore, appUIStore } = this.injected;
@@ -74,9 +87,15 @@ class WelcomeScreen extends React.Component<any,WelcomeScreenState> {
           <Text>Enable Bluetooth</Text>
         </Button>
 
+        <Button onPress={() => this.navigateToListScreen()}>
+          <Icon name="arrow-forward" />
+          <Text>Show List Screen</Text>
+        </Button>
+
         <Button onPress={() => {
           DeviceBrightness.setBrightnessLevel(0.1);
           samplesStore.incCounter();
+          samplesStore.pushAndPopItem((10 * Math.random()).toFixed(1));
         }}>
           <Icon name="home" />
           <Text>Lower Brightness</Text>

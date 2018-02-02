@@ -29,6 +29,7 @@
     "react-native-typescript-transformer": "1.2.3",
     "react-native-vector-icons": "4.5.0",
     "react-navigation": "1.0.0-beta.27",
+    "serializr": "^1.1.14",
     "tslint": "5.9.1",
     "tslint-config-airbnb": "5.5.0",
     "typescript": "2.6.2"
