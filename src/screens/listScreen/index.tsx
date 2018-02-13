@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 
-import { Button, Text, Icon, List, ListItem, Body, Right, Toast } from 'native-base';
+import { Text, Icon, List, ListItem, Body, Right, Toast } from 'native-base';
 
 
 class ListScreen extends React.Component<any,any> {

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, NavigationProp } from 'react-navigation';
 
 import { Button, Text, Icon } from 'native-base';
 import { MaterialDialog } from 'react-native-material-dialog';
@@ -27,7 +27,7 @@ interface WelcomeScreenState {
 interface InjectedWelcomeScreenProps extends WelcomeScreenProps {
   samplesStore: SampleStore;
   appUIStore: AppUIStore;
-  navigation: object;
+  navigation: NavigationProp;
 }
 
 
@@ -58,11 +58,11 @@ class WelcomeScreen extends React.Component<WelcomeScreenProps,WelcomeScreenStat
     const navigateAction = NavigationActions.navigate({
       params: {},
       routeName: 'List',
-      action: NavigationActions.navigate({ routeName: 'List' }),
     });
 
-    this.props.navigation.dispatch(navigateAction);
+    this.injected.navigation.dispatch(navigateAction);
   }
+
 
   render() {
     const { samplesStore, appUIStore } = this.injected;
