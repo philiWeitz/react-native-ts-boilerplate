@@ -5,6 +5,7 @@ import { StackNavigator } from 'react-navigation';
 import Header from './components/header';
 import ListScreen from './screens/listScreen';
 import WelcomeScreen from './screens/welcomeScreen';
+import defaultTransition from './transitions/defaultTransition';
 
 
 const navOptions = {
@@ -25,6 +26,8 @@ const WelcomeNavigator = StackNavigator({
       ...navOptions,
     },
   },
+},{
+  transitionConfig: defaultTransition,
 });
 
 export default WelcomeNavigator;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 
-import { NavigationActions, NavigationProp } from 'react-navigation';
+import { NavigationActions, NavigationScreenProp } from 'react-navigation';
 
 import { Button, Text, Icon } from 'native-base';
 import { MaterialDialog } from 'react-native-material-dialog';
@@ -27,7 +27,7 @@ interface WelcomeScreenState {
 interface InjectedWelcomeScreenProps extends WelcomeScreenProps {
   samplesStore: SampleStore;
   appUIStore: AppUIStore;
-  navigation: NavigationProp;
+  navigation: NavigationScreenProp;
 }
 
 

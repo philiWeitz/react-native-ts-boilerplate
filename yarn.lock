@@ -26,7 +26,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-navigation@^1.0.32":
+"@types/react-navigation@1.0.32":
   version "1.0.32"
   resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-1.0.32.tgz#5cd0ccd6aec2223ce140421624231c9741c2a276"
   dependencies:
@@ -4446,7 +4446,7 @@ serialize-error@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-2.1.0.tgz#50b679d5635cdf84667bdc8e59af4e5b81d5f60a"
 
-serializr@^1.1.11, serializr@^1.1.14:
+serializr@1.1.14, serializr@^1.1.11:
   version "1.1.14"
   resolved "https://registry.yarnpkg.com/serializr/-/serializr-1.1.14.tgz#abd4341592b8f7b38cca9329d7d659d35418f559"
 

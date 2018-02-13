@@ -3,6 +3,7 @@
   "rules": {
     "import-name": false,
     "variable-name": false,
+    "align": [true, "statements"],
     "no-consecutive-blank-lines": [true, 2]
   }
 }

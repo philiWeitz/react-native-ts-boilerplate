@@ -1,13 +1,11 @@
 
 import * as React from 'react';
 
-import { View, Dimensions, StyleSheet, Platform } from 'react-native';
+import { View, Platform } from 'react-native';
+import { NavigationScreenProp } from 'react-navigation';
 import { Text, Body, Button, Icon, Right, Left } from 'native-base';
 
-
-const { width: screenWidth } = Dimensions.get('window');
-
-export const HEADER_HEIGHT = 40;
+import styles from './style';
 
 
 export interface HeaderProps {
@@ -17,18 +15,11 @@ export interface HeaderProps {
 // add injected props here
 interface InjectedProps extends HeaderProps {
   index: number;
+  navigation: NavigationScreenProp;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    height: HEADER_HEIGHT,
-    flexDirection: 'row',
-    width: screenWidth,
-  },
-});
 
-
-class Header extends React.Component<HeaderProps,any> {
+class Header extends React.Component<HeaderProps> {
 
   private get injected() : InjectedProps {
     return this.props as InjectedProps;
@@ -48,8 +39,6 @@ class Header extends React.Component<HeaderProps,any> {
 
 
   render() {
-    console.log(this.props);
-
     return (
       <View style={styles.container}>
         {this.renderBackButton()}
