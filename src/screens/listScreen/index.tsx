@@ -1,19 +1,63 @@
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Animated, Easing } from 'react-native';
 
 import { Text, Icon, List, ListItem, Body, Right, Toast } from 'native-base';
 
 
-class ListScreen extends React.Component<any,any> {
+class ListScreen extends React.Component {
 
-  onListItemPress = (itemName) => {
+
+  onListItemPress = (itemName, animatedValue) => {
+    // play the animation on click
+    this.playConnectAnimation(animatedValue);
+
     Toast.show({
       text: `${itemName} selected`,
       position: 'bottom',
       buttonText: 'Okay',
       type: 'success',
     });
+  }
+
+
+  playConnectAnimation = (animatedValue) => {
+    // reset animation
+    animatedValue.setValue(0);
+
+    Animated.timing(
+      animatedValue,
+      {
+        toValue: 1,
+        duration: 500,
+        easing: Easing.out(Easing.elastic(2)),
+      },
+    ).start();
+  }
+
+
+  renderListItem = (text) => {
+
+    const animatedValue = new Animated.Value(0);
+
+    const movingMargin = animatedValue.interpolate({
+      inputRange: [0, 0.5, 1],
+      outputRange: [0, 20, 0],
+    });
+
+    return (
+      <ListItem icon onPress={() => {this.onListItemPress(text, animatedValue);}}>
+        <Body>
+        <Text>{text}</Text>
+        </Body>
+        <Right>
+          <Animated.View style={{ marginRight: movingMargin, flexDirection: 'row' }}>
+            <Text>Connect</Text>
+            <Icon name="arrow-forward" />
+          </Animated.View>
+        </Right>
+      </ListItem>
+    );
   }
 
 
@@ -26,33 +70,10 @@ class ListScreen extends React.Component<any,any> {
           <ListItem itemDivider>
             <Text>Available Items</Text>
           </ListItem>
-          <ListItem icon onPress={() => {this.onListItemPress('Item 1');}}>
-            <Body>
-            <Text>Item 1</Text>
-            </Body>
-            <Right>
-              <Text>Connect</Text>
-              <Icon name="arrow-forward" />
-            </Right>
-          </ListItem>
-          <ListItem icon onPress={() => {this.onListItemPress('Item 2');}}>
-            <Body>
-            <Text>Item 2</Text>
-            </Body>
-            <Right>
-              <Text>Connect</Text>
-              <Icon name="arrow-forward" />
-            </Right>
-          </ListItem>
-          <ListItem icon onPress={() => {this.onListItemPress('Item 3');}}>
-            <Body>
-            <Text>Item 3</Text>
-            </Body>
-            <Right>
-              <Text>Connect</Text>
-              <Icon name="arrow-forward" />
-            </Right>
-          </ListItem>
+
+          {this.renderListItem('Item 1')}
+          {this.renderListItem('Item 2')}
+          {this.renderListItem('Item 3')}
         </List>
 
       </View>
