@@ -30,19 +30,18 @@ class ListScreen extends React.Component {
       {
         toValue: 1,
         duration: 500,
-        easing: Easing.out(Easing.elastic(2)),
+        easing: Easing.linear,
       },
     ).start();
   }
 
 
   renderListItem = (text) => {
-
     const animatedValue = new Animated.Value(0);
 
-    const movingMargin = animatedValue.interpolate({
+    const translateX = animatedValue.interpolate({
       inputRange: [0, 0.5, 1],
-      outputRange: [0, 20, 0],
+      outputRange: [0, 30, 0],
     });
 
     return (
@@ -51,7 +50,7 @@ class ListScreen extends React.Component {
         <Text>{text}</Text>
         </Body>
         <Right>
-          <Animated.View style={{ marginRight: movingMargin, flexDirection: 'row' }}>
+          <Animated.View style={{ flexDirection: 'row', transform: [{ translateX }] }}>
             <Text>Connect</Text>
             <Icon name="arrow-forward" />
           </Animated.View>
