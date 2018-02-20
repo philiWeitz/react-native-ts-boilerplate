@@ -4,7 +4,7 @@ import { Root } from 'native-base';
 
 import WelcomeNavigator from './navigation';
 import persist, { IHydrateStore } from './mobx/persist';
-import Provider, { providedStores } from './mobx/provider';
+import Provider, { providedStores } from './mobx/Provider';
 
 
 class App extends React.Component<any,any> {

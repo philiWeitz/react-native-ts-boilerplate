@@ -11,10 +11,14 @@ export interface IHydrateStore {
 
 class Persist {
 
-  private hydrate : IHydrateResult = create({
-    storage: AsyncStorage,
-    jsonify: true,
-  });
+  private hydrate : <T>(key: string, store: T) => IHydrateResult<T>;
+
+  constructor() {
+    this.hydrate = create({
+      storage: AsyncStorage,
+      jsonify: true,
+    });
+  }
 
   hydrateStores(stores: IHydrateStore[]) : Promise {
     return Promise.all(stores.map((item: IHydrateStore) => {

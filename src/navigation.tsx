@@ -2,9 +2,8 @@
 import * as React from 'React';
 import { StackNavigator } from 'react-navigation';
 
-import Header from './components/header';
-import ListScreen from './screens/listScreen';
-import WelcomeScreen from './screens/welcomeScreen';
+import { Header } from './components';
+import { ListScreen, WelcomeScreen } from './screens';
 import defaultTransition from './transitions/defaultTransition';
 
 

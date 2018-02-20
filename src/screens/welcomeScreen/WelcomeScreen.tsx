@@ -19,12 +19,12 @@ export interface WelcomeScreenProps {
 
 }
 
-interface WelcomeScreenState {
+interface ScreenState {
   dialogVisible: boolean;
 }
 
 // add injected props here
-interface InjectedWelcomeScreenProps extends WelcomeScreenProps {
+interface InjectedProps extends WelcomeScreenProps {
   samplesStore: SampleStore;
   appUIStore: AppUIStore;
   navigation: NavigationScreenProp;
@@ -34,15 +34,15 @@ interface InjectedWelcomeScreenProps extends WelcomeScreenProps {
 @inject('samplesStore')
 @inject('appUIStore')
 @observer
-class WelcomeScreen extends React.Component<WelcomeScreenProps,WelcomeScreenState> {
+class WelcomeScreen extends React.Component<WelcomeScreenProps,ScreenState> {
 
   state = {
     dialogVisible: false,
   };
 
 
-  private get injected() : InjectedWelcomeScreenProps {
-    return this.props as InjectedWelcomeScreenProps;
+  private get injected() : InjectedProps {
+    return this.props as InjectedProps;
   }
 
 

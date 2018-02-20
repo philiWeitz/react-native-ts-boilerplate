@@ -5,7 +5,7 @@ import { View, Platform } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import { Text, Body, Button, Icon, Right, Left } from 'native-base';
 
-import styles from './style';
+import styles from './HeaderStyle';
 
 
 export interface HeaderProps {
