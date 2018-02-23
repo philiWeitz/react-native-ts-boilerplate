@@ -3,18 +3,18 @@ import { Animated, Easing, Dimensions } from 'react-native';
 
 
 const defaultTransition = (index, position) => {
-  const inputRange = [index - 1, index, index + 1];
+  // const inputRange = [index - 1, index, index + 1];
 
-  const opacity = position.interpolate({
+  /* const opacity = position.interpolate({
     inputRange,
     outputRange: [0, 1, 0],
-  });
+  }); */
 
   // used to expand the screen
-  const scale = position.interpolate({
+  /* const scale = position.interpolate({
     inputRange,
     outputRange: ([0, 1, 1]),
-  });
+  }); */
 
   const { width } = Dimensions.get('window');
 

@@ -15,7 +15,7 @@ export interface HeaderProps {
 // add injected props here
 interface InjectedProps extends HeaderProps {
   index: number;
-  navigation: NavigationScreenProp;
+  navigation: NavigationScreenProp<any, any>;
 }
 
 

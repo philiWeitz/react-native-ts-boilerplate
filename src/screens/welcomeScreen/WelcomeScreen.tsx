@@ -27,7 +27,7 @@ interface ScreenState {
 interface InjectedProps extends WelcomeScreenProps {
   samplesStore: SampleStore;
   appUIStore: AppUIStore;
-  navigation: NavigationScreenProp;
+  navigation: NavigationScreenProp<any,any>;
 }
 
 
@@ -107,7 +107,7 @@ class WelcomeScreen extends React.Component<WelcomeScreenProps,ScreenState> {
           onOk={() => {
             BleManager.enableBluetooth().then(() => {
               // Success code
-              console.log('The bluetooh is already enabled or the user confirm');
+              console.debug('The bluetooh is already enabled or the user confirm');
             });
             this.setState({ dialogVisible: false });
           }}

@@ -20,9 +20,9 @@ class Persist {
     });
   }
 
-  hydrateStores(stores: IHydrateStore[]) : Promise {
+  hydrateStores(stores: IHydrateStore[]) : Promise<any> {
     return Promise.all(stores.map((item: IHydrateStore) => {
-      console.log(`Hydrate ${item.key}`);
+      console.debug(`Hydrate ${item.key}`);
       return this.hydrate(item.key, item.store);
     }));
   }
