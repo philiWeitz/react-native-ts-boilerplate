@@ -11,8 +11,13 @@ import * as DeviceBrightness from 'react-native-device-brightness';
 import * as BleManager from 'react-native-ble-manager';
 import KeepAwake from 'react-native-keep-awake';
 
+import styles from './styles';
 import AppUIStore from '../../mobx/uiStores/appUIStore';
 import SampleStore from '../../mobx/domainStores/samplesStore';
+
+import mutation from '../../graphql/mutation';
+import subscription from '../../graphql/subscription';
+import { PostList, PostSubscriptionList } from '../../components';
 
 
 export interface WelcomeScreenProps {
@@ -51,6 +56,10 @@ class WelcomeScreen extends React.Component<WelcomeScreenProps,ScreenState> {
 
     KeepAwake.activate();
     BleManager.start({ showAlert: false });
+
+    // handle subscription manually
+    subscription.subscribePosts(1)
+      .subscribe(() => console.log('Post was updated'));
   }
 
 
@@ -63,6 +72,18 @@ class WelcomeScreen extends React.Component<WelcomeScreenProps,ScreenState> {
     this.injected.navigation.dispatch(navigateAction);
   }
 
+
+  upVoteFirstVote = () => {
+    // mutate manually
+    mutation.upVotePost(1);
+  }
+
+
+  renderPosts = ({ data: { loading, posts } }) => {
+    return (
+      <Text>TEST GRAPHQL</Text>
+    );
+  }
 
   render() {
     const { samplesStore, appUIStore } = this.injected;
@@ -99,6 +120,17 @@ class WelcomeScreen extends React.Component<WelcomeScreenProps,ScreenState> {
         }}>
           <Icon name="home" />
           <Text>Lower Brightness</Text>
+        </Button>
+
+        <View style={styles.container}>
+          <PostList />
+        </View>
+        <View style={styles.container}>
+          <PostSubscriptionList />
+        </View>
+
+        <Button onPress={this.upVoteFirstVote}>
+          <Text>Up vote first post</Text>
         </Button>
 
         <MaterialDialog

@@ -1,10 +1,13 @@
 
 import * as React from 'react';
 import { Root } from 'native-base';
+import { ApolloProvider } from 'react-apollo';
 
 import WelcomeNavigator from './navigation';
 import persist, { IHydrateStore } from './mobx/persist';
 import Provider, { providedStores } from './mobx/Provider';
+
+import graphQLClient from './graphql/graphQLClient';
 
 
 class App extends React.Component<any,any> {
@@ -25,7 +28,9 @@ class App extends React.Component<any,any> {
     return (
       <Root>
         <Provider>
-          <WelcomeNavigator />
+          <ApolloProvider client={graphQLClient}>
+            <WelcomeNavigator />
+          </ApolloProvider>
         </Provider>
       </Root>
     );
