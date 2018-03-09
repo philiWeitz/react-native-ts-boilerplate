@@ -3,14 +3,13 @@ import { StyleSheet } from 'react-native';
 
 
 export default StyleSheet.create({
-  page: {
+  header: {
+    fontSize: 20,
+    fontWeight: 'bold',
     marginTop: 20,
-    marginHorizontal: 20,
+    marginBottom: 10,
   },
   container: {
-    marginVertical: 10,
-  },
-  button: {
-    marginVertical: 5,
+    marginBottom: 20,
   },
 });

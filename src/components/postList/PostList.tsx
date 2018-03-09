@@ -2,8 +2,9 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Text } from 'native-base';
-
 import { graphql } from 'react-apollo';
+
+import styles from './styles';
 import query from '../../graphql/query';
 
 const PostList = ({ data: { posts, loading } }) => {
@@ -27,8 +28,8 @@ const PostList = ({ data: { posts, loading } }) => {
 
   const renderContent = () => {
     return (
-      <View>
-        <Text>GraphQL Query Example</Text>
+      <View style={styles.container}>
+        <Text style={styles.header}>GraphQL Query Example</Text>
         {loading ? renderLoading() : renderPosts()}
       </View>
     );
@@ -37,4 +38,4 @@ const PostList = ({ data: { posts, loading } }) => {
   return renderContent();
 };
 
-export default graphql(query.getPostsQuery())(PostList as any);
+export default graphql(query.getPostsQuery(), {})(PostList as any);

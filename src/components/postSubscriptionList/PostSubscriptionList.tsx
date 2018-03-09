@@ -5,13 +5,14 @@ import { Text } from 'native-base';
 
 import { graphql } from 'react-apollo';
 
+import styles from './styles';
 import subscription from '../../graphql/subscription';
 
 
 const PostSubscriptionList = ({ data: { postUpVoted, loading } }) => {
 
   const renderLoading = () => {
-    return <Text>Loading...</Text>;
+    return <Text>Waiting for data...</Text>;
   };
 
   const renderPosts = () => {
@@ -27,8 +28,8 @@ const PostSubscriptionList = ({ data: { postUpVoted, loading } }) => {
 
   const renderContent = () => {
     return (
-      <View>
-        <Text>GraphQL Subscription Example</Text>
+      <View style={styles.container}>
+        <Text style={styles.header}>GraphQL Subscription Example</Text>
         {loading ? renderLoading() : renderPosts()}
       </View>
     );

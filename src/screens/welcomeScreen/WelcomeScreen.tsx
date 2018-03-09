@@ -89,7 +89,7 @@ class WelcomeScreen extends React.Component<WelcomeScreenProps,ScreenState> {
     const { samplesStore, appUIStore } = this.injected;
 
     return (
-      <View>
+      <View style={styles.page}>
         <Text>Welcome Page</Text>
         <Text>Counter: {samplesStore.counter}</Text>
 
@@ -103,17 +103,17 @@ class WelcomeScreen extends React.Component<WelcomeScreenProps,ScreenState> {
           return <Text key={item}>{item}</Text>;
         })}
 
-        <Button onPress={() => this.setState({ dialogVisible: true })}>
+        <Button style={styles.button} block onPress={() => this.setState({ dialogVisible: true })}>
           <Icon name="home" />
           <Text>Enable Bluetooth</Text>
         </Button>
 
-        <Button onPress={() => this.navigateToListScreen()}>
+        <Button style={styles.button} block onPress={() => this.navigateToListScreen()}>
           <Icon name="arrow-forward" />
           <Text>Show List Screen</Text>
         </Button>
 
-        <Button onPress={() => {
+        <Button style={styles.button} block onPress={() => {
           DeviceBrightness.setBrightnessLevel(0.1);
           samplesStore.incCounter();
           samplesStore.pushAndPopItem((10 * Math.random()).toFixed(1));
@@ -122,14 +122,14 @@ class WelcomeScreen extends React.Component<WelcomeScreenProps,ScreenState> {
           <Text>Lower Brightness</Text>
         </Button>
 
-        <View style={styles.container}>
+        {/*<View style={styles.container}>
           <PostList />
-        </View>
+        </View>*/}
         <View style={styles.container}>
           <PostSubscriptionList />
         </View>
 
-        <Button onPress={this.upVoteFirstVote}>
+        <Button block onPress={this.upVoteFirstVote}>
           <Text>Up vote first post</Text>
         </Button>
 
