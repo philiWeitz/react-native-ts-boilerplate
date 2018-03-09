@@ -17,7 +17,7 @@ import SampleStore from '../../mobx/domainStores/samplesStore';
 
 import mutation from '../../graphql/mutation';
 import subscription from '../../graphql/subscription';
-import { PostList, PostSubscriptionList } from '../../components';
+import { PostSubscriptionList } from '../../components';
 
 
 export interface WelcomeScreenProps {
@@ -122,9 +122,6 @@ class WelcomeScreen extends React.Component<WelcomeScreenProps,ScreenState> {
           <Text>Lower Brightness</Text>
         </Button>
 
-        {/*<View style={styles.container}>
-          <PostList />
-        </View>*/}
         <View style={styles.container}>
           <PostSubscriptionList />
         </View>
